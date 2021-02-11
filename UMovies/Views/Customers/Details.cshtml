@@ -8,7 +8,7 @@
 
 <h2>Customer Details</h2>
 
-@if(Model == null)
+@if (Model == null)
 {
     <p>Something wrong about this customers details</p>
 }
@@ -16,6 +16,12 @@ else
 {
     <h1>@Model.Name</h1>
     <br />
-    <h2>@Model.CustomerID</h2>
+    <ul>
+        <li><h3>@Model.MembershipType.Name</h3></li>
+        @if(Model.BirthDate != null)
+        {
+            <li><h3>@Model.BirthDate</h3></li>
+        }
+    </ul>
 }
 

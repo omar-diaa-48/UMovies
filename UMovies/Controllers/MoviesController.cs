@@ -10,25 +10,23 @@ namespace UMovies.Controllers
 {
     public class MoviesController : Controller
     {
-        Movie movie = new Movie() { Name = "Shrek" };
-
-        List<Customer> customers = new List<Customer>
-            {
-                new Customer {Name = "John Smith", CustomerID = 1},
-                new Customer{Name = "Mary Williams", CustomerID = 2}
-            };
+        BusinessModelContext DBContext = new BusinessModelContext();
 
         // GET: Movies
         public ActionResult Random()
         {
+            return View(DBContext.Movies);
+        }
 
-            var viewModel = new CustomersMoviesViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
 
-            return View(viewModel);
+        public ActionResult Details(int id)
+        {
+            return View(DBContext.Movies.FirstOrDefault(m=>m.MovieID == id));
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            DBContext.Dispose();
         }
 
     }

@@ -1,0 +1,36 @@
+﻿
+@model UMovies.Models.Customer
+
+@{
+    ViewBag.Title = "EditCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EditCustomer</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.EditorFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BirthDate)
+        @Html.EditorFor(m => m.BirthDate, new { @class = "form-control" })
+        @Html.DisplayFor(m=>m.BirthDate)
+    </div>
+    <div class="form-group">
+        @Html.EditorFor(m => m.IsSubscribedToNewsletter, new { @class = "form-control" })
+        @Html.LabelFor(m => m.IsSubscribedToNewsletter)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MembershipType.Name)
+        @Html.DropDownListFor(m => m.MembershipTypeID, new SelectList(ViewBag.MembershipTypes, "Id","Name", "MembershipTypeID"),"Select Membership Type",new { @class="form-control"})
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Finish</button>
+    </div>
+}
+
+@Html.ActionLink("Back to customers list","Index","Customers")
+
