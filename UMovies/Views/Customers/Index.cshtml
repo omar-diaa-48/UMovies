@@ -1,0 +1,32 @@
+﻿
+@model IEnumerable<UMovies.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+
+@if (Model.ToList().Count <= 0)
+{
+    <h4>No Customers in the list</h4>
+    @Html.ActionLink("Create Customer", "Create", "Customers")
+}
+else
+{
+<table class="table table-bordered table-hover">
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(item.Name, "Details", new { id = item.CustomerID })</td>
+            </tr>
+        }
+    </tbody>
+   
+</table>
+}
+

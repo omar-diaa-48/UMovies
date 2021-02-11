@@ -1,0 +1,13 @@
+﻿@model UMovies.ViewModels.CustomersMoviesViewModel
+
+@{
+    ViewBag.Title = "Random";
+}
+
+<h2>@Model.Movie.Name</h2>
+
+@foreach (var item in Model.Customers)
+{
+    <h2>@item.Name</h2>
+}
+

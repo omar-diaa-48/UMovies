@@ -1,0 +1,21 @@
+﻿
+@model UMovies.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details</h2>
+
+@if(Model == null)
+{
+    <p>Something wrong about this customers details</p>
+}
+else
+{
+    <h1>@Model.Name</h1>
+    <br />
+    <h2>@Model.CustomerID</h2>
+}
+
